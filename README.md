@@ -67,11 +67,15 @@ Note: Replace with your actual web address and AID, convert to did:web(s) confor
 dkr did webs generate --name controller --did did:webs:peacekeeper.github.io:did-webs-iiw-demo:EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP --oobi http://witnesshost:5642/oobi/EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP/witness/BBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha
 ```
 
-## Upload did.json and keri.cesr to the server at your web address
+This creates files did.json and keri.cesr under local path ./volume/dkr/
+
+## Upload did.json and keri.cesr to your web server
 
 E.g. using Github pages, FTP, SCP, etc.
 
-## Test files on server
+## Check if files are available on your server
+
+Note: Replace with your actual web address and AID
 
 https://peacekeeper.github.io/did-webs-iiw-demo/EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP/did.json
 
