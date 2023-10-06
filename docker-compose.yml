@@ -6,7 +6,6 @@ services:
         hostname: witnesshost
         image: gleif/keri:latest
         tty: true
-        working_dir: /keripy
         volumes:
             - ./volume/witnesshost/keripy/scripts/keri/cf/main/:/keripy/scripts/keri/cf/main/
         ports:
@@ -20,8 +19,7 @@ services:
         hostname: dkr
         image: gleif/dkr:latest
         tty: true
-        working_dir: /keripy
         volumes:
             - ./volume/dkr/my-scripts/:/keripy/my-scripts/
-            - ./volume/dkr/json_did/:/usr/local/var/did-keri-resolver/json_did/
+            - ./volume/dkr/did_json/:/usr/local/var/did-keri-resolver/did_json/
             - ./volume/dkr/keri_cesr/:/usr/local/var/did-keri-resolver/keri_cesr/
