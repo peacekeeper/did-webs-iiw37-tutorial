@@ -1,4 +1,4 @@
-# did:webs IIW Walkthrough
+# did:webs IIW37 Demo
 
 ## Run Docker containers with keripy and dkr
 
@@ -25,8 +25,8 @@ Example response:
 Note: Replace with your actual salt
 
 ```
-kli init --name controller --salt 0AAQmsjh-C7kAJZQEzdrzwB7 --nopasscode --config-dir "./my-scripts" --config-file my-config
-kli incept --name controller --alias controller --file "./my-scripts/my-incept.json"
+kli init --name controller --salt 0AAQmsjh-C7kAJZQEzdrzwB7 --nopasscode --config-dir "/keripy/my-scripts" --config-file my-config
+kli incept --name controller --alias controller --file "/keripy/my-scripts/my-incept.json"
 ```
 
 Example AID:
@@ -56,13 +56,13 @@ Find a web address (domain, optional port, optional path) that you control.
 Example web address:
 
 ```
-mydomain.com
+https://peacekeeper.github.io/did-webs-iiw-demo/
 ```
 
 ## Generate did:webs files for AID
 
-Note: Replace with your actual web address and AID
+Note: Replace with your actual web address and AID, convert to did:web(s) conformant identifier
 
 ```
-dkr did webs generate --name controller --did did:webs:mydomain.com:EPaP4GgZsB6Ww-SeSO2gwNDMNpC7-DN51X5AqiJFWkw6 --oobi http://localhost:5642/oobi/EPaP4GgZsB6Ww-SeSO2gwNDMNpC7-DN51X5AqiJFWkw6/witness/BBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha
+dkr did webs generate --name controller --did did:webs:peacekeeper.github.io:did-webs-iiw-demo:EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP --oobi http://witnesshost:5642/oobi/EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP/witness/BBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha
 ```
