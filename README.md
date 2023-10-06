@@ -66,3 +66,15 @@ Note: Replace with your actual web address and AID, convert to did:web(s) confor
 ```
 dkr did webs generate --name controller --did did:webs:peacekeeper.github.io:did-webs-iiw-demo:EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP --oobi http://witnesshost:5642/oobi/EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP/witness/BBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha
 ```
+
+## Upload did.json and keri.cesr to the server at your web address
+
+E.g. using Github pages, FTP, SCP, etc.
+
+## Resolve as did:web
+
+https://dev.uniresolver.io/#did:web:peacekeeper.github.io:did-webs-iiw-demo:EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP
+
+## Resolve as did:webs (coming soon)
+
+https://dev.uniresolver.io/#did:webs:peacekeeper.github.io:did-webs-iiw-demo:EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP
