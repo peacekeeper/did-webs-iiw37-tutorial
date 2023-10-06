@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+    witnesshost:
+        container_name: witnesshost
+        hostname: witnesshost
+        image: gleif/keri:latest
+        tty: true
+        working_dir: /keripy
+        volumes:
+            - ./volume/witnesshost/keripy/scripts/keri/cf/main/:/keripy/scripts/keri/cf/main/
+        ports:
+            - 5642:5642  # witness
+            - 5643:5643  # witness
+            - 5644:5644  # witness
+        entrypoint: kli witness demo
+
+    dkr:
+        container_name: dkr
+        hostname: dkr
+        image: gleif/dkr:latest
+        tty: true
+        working_dir: /keripy
+        volumes:
+            - ./volume/dkr/my-scripts/:/keripy/my-scripts/
+            - ./volume/dkr/json_did/:/usr/local/var/did-keri-resolver/json_did/
+            - ./volume/dkr/keri_cesr/:/usr/local/var/did-keri-resolver/keri_cesr/
