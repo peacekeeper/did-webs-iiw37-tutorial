@@ -1,4 +1,4 @@
-# did:webs IIW37 Demo
+# did:webs IIW37 Tutorial
 
 ## Run Docker containers with keripy and dkr
 
