@@ -71,6 +71,12 @@ dkr did webs generate --name controller --did did:webs:peacekeeper.github.io:did
 
 E.g. using Github pages, FTP, SCP, etc.
 
+## Test files on server
+
+https://peacekeeper.github.io/did-webs-iiw-demo/EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP/did.json
+
+https://peacekeeper.github.io/did-webs-iiw-demo/EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP/keri.cesr
+
 ## Resolve as did:web
 
 https://dev.uniresolver.io/#did:web:peacekeeper.github.io:did-webs-iiw-demo:EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP
