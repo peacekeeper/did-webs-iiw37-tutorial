@@ -39,16 +39,6 @@ EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP
 
 Optionally use `kli` to perform additional KERI operations such as key rotation, threshold signatures, etc., see KERI docs for details.
 
-## (Optional) Resolve AID as did:keri
-
-Optionally resolve the AID locally as did:keri, using an OOBI as resolution option.
-
-Note: Replace with your actual AID
-
-```
-dkr did keri resolve --name controller --did did:keri:EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP --oobi http://witnesshost:5642/oobi/EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP/witness/BBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha
-```
-
 ## Decide your web address for did:webs
 
 Find a web address (domain, optional port, optional path) that you control.
@@ -81,10 +71,30 @@ https://peacekeeper.github.io/did-webs-iiw37-tutorial/EKYGGh-FtAphGmSZbsuBs_t4qp
 
 https://peacekeeper.github.io/did-webs-iiw37-tutorial/EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP/keri.cesr
 
-## Resolve as did:web
+## (Optional) Resolve AID as did:keri using local resolver
+
+Optionally resolve the AID locally as did:keri, given an OOBI as resolution option.
+
+Note: Replace with your actual AID
+
+```
+dkr did keri resolve --name controller --did did:keri:EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP --oobi http://witnesshost:5642/oobi/EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP/witness/BBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha
+```
+
+## (Optional) Resolve AID as did:webs using local resolver
+
+Optionally resolve the AID locally as did:webs.
+
+Note: Replace with your actual web address and AID
+
+```
+dkr did webs resolve --name controller --did did:webs:peacekeeper.github.io:did-webs-iiw-tutorial:EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP
+```
+
+## Resolve as did:web using Universal Resolver
 
 https://dev.uniresolver.io/#did:web:peacekeeper.github.io:did-webs-iiw37-tutorial:EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP
 
-## Resolve as did:webs
+## Resolve as did:webs using Universal Resolver
 
 https://dev.uniresolver.io/#did:webs:peacekeeper.github.io:did-webs-iiw37-tutorial:EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP
