@@ -56,7 +56,7 @@ Find a web address (domain, optional port, optional path) that you control.
 Example web address:
 
 ```
-https://peacekeeper.github.io/did-webs-iiw-tutorial/
+https://peacekeeper.github.io/did-webs-iiw37-tutorial/
 ```
 
 ## Generate did:webs files for AID
