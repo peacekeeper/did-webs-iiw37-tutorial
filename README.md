@@ -88,7 +88,7 @@ Optionally resolve the AID locally as did:webs.
 Note: Replace with your actual web address and AID
 
 ```
-dkr did webs resolve --name controller --did did:webs:peacekeeper.github.io:did-webs-iiw-tutorial:EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP
+dkr did webs resolve --name controller --did did:webs:peacekeeper.github.io:did-webs-iiw37-tutorial:EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP
 ```
 
 ## Resolve as did:web using Universal Resolver
