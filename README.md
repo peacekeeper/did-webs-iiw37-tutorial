@@ -2,8 +2,34 @@
 
 ## Run Docker containers with keripy and dkr
 
+Be sure if you're not running a fresh new install to check the next section "Your docker container is already up- and running". If fresh 'n new:
+
+
 ```
 docker compose down
+docker compose up -d
+docker compose exec dkr /bin/bash
+```
+
+### Your docker container is already up- and running?
+
+#### Do you have a witness up for another identifier?
+Then the `kli incept --name controller --alias controller --file "/keripy/my-scripts/my-incept.json"` command will give this response:
+
+`ERR: Already incepted pre=[Your prefix of another AID].`
+ 
+#### Solution
+Various solution if you're a Docker expert. If not, we'll go down the more rigorous path:
+
+1. Step out of the running container with `exit` 
+2. and then `docker compose down`. This should respond with:
+
+[+] Running 3/3
+ ⠿ Container dkr                            Removed                                                                                                                                                                              0.0s
+ ⠿ Container witnesshost                    Removed                                                                                                                                                                             13.7s
+ ⠿ Network did-webs-iiw37-tutorial_default  Removed                                                                                                                                                                              3.1s
+Now you could continue with:
+```
 docker compose up -d
 docker compose exec dkr /bin/bash
 ```
@@ -57,11 +83,42 @@ Note: Replace with your actual web address and AID, convert to did:web(s) confor
 dkr did webs generate --name controller --did did:webs:peacekeeper.github.io:did-webs-iiw37-tutorial:EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP --oobi http://witnesshost:5642/oobi/EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP/witness/BBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha
 ```
 
-This creates files did.json and keri.cesr under local path ./volume/dkr/
+This creates files:
+-  `did.json` under local path `./volume/dkr/did_json/<your AID>`
+-  `keri.cesr` under local path `./volume/dkr/keri_cesr/<your AID>`
+
+You can access these files either from within your Docker container or on your local computer filesystem.
+- `<local path on computer to did-webs-iiw37-tutorial>/volume/dkr/` 
+- `/usr/local/var/did-keri-resolver/did_json/<your AID>` (local path in the Docker container)
+
+and extend those paths with either `did_json/<your AID>` or `keri_cesr/<your AID>`.
 
 ## Upload did.json and keri.cesr to your web server
 
-E.g. using Github pages, FTP, SCP, etc.
+E.g. using git, Github pages, FTP, SCP, etc.
+
+### Example WOT-terms install using git
+```
+cd /Users/hvc/apps/did-webs-iiw37-tutorial/volume/dkr/did_json/ENbWS51Pw1rmxz5QIfK5kp3ODaEeQcZjqQNrLpc6mMQq
+cp did.json ~/apps/WOT-terms/
+cd ../../keri_cesr/ENbWS51Pw1rmxz5QIfK5kp3ODaEeQcZjqQNrLpc6mMQq
+cp keri.cesr ~/apps/WOT-terms/
+```
+
+Result in local WOT-terms repo
+```
+hvc@Henks-Mbp20 ~/apps/WOT-terms: git status
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	did.json
+	keri.cesr
+
+git add .
+git commit -m "prepare upload did:webs documents to WOT-terms"  
+git push upstream main
+```
+Now the files are on the controlled webserver.
 
 ## Check if files are available on your server
 
