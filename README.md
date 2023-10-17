@@ -75,6 +75,7 @@ Example web address:
 https://peacekeeper.github.io/did-webs-iiw37-tutorial/
 ```
 
+
 ## Generate did:webs files for AID
 
 Note: Replace with your actual web address and AID, convert to did:web(s) conformant identifier
@@ -93,13 +94,28 @@ You can access these files either from within your Docker container or on your l
 
 and extend those paths with either `did_json/<your AID>` or `keri_cesr/<your AID>`.
 
+### Special attention Github Pages: web address
+If you use static page generators to populate your github pages (e.g. Jekyll or Docusaurus) be sure to choose the `Raw` version of your file links:
+
+#### Example
+This is the web address of the docusaurus directory:
+https://weboftrust.github.io/WOT-terms/test/did-webs-iiw37-tutorial/
+
+```
+Inside-container command:
+bash-5.1# dkr did webs generate --name controller --did did:webs:raw.githubusercontent.com:WOT-terms:test:did-webs-iiw37-tutorial:EDc2kYoDYWrQow0v6fbKvOypYzj_Vi-UxbEQv0rWC1Kx --oobi http://witnesshost:5642/oobi/EDc2kYoDYWrQow0v6fbKvOypYzj_Vi-UxbEQv0rWC1Kx/witness/BBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha
+```
+
 ## Upload did.json and keri.cesr to your web server
 
 E.g. using git, Github pages, FTP, SCP, etc.
 
 ### Example WOT-terms install using git
+
+We choose `WOT-terms` as our [DESTINATION LOCAL REPO]
+
 ```
-cd /Users/hvc/apps/did-webs-iiw37-tutorial/volume/dkr/did_json/ENbWS51Pw1rmxz5QIfK5kp3ODaEeQcZjqQNrLpc6mMQq
+cd [PATH TO LOCAL SOURCE REPO did-webs-iiw37-tutorial]/volume/dkr/did_json/ENbWS51Pw1rmxz5QIfK5kp3ODaEeQcZjqQNrLpc6mMQq
 cp did.json ~/apps/WOT-terms/
 cd ../../keri_cesr/ENbWS51Pw1rmxz5QIfK5kp3ODaEeQcZjqQNrLpc6mMQq
 cp keri.cesr ~/apps/WOT-terms/
@@ -107,7 +123,7 @@ cp keri.cesr ~/apps/WOT-terms/
 
 Result in local WOT-terms repo
 ```
-hvc@Henks-Mbp20 ~/apps/WOT-terms: git status
+[DESTINATION LOCAL REPO]: git status
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
@@ -118,7 +134,7 @@ git add .
 git commit -m "prepare upload did:webs documents to WOT-terms"  
 git push upstream main
 ```
-Now the files are on the controlled webserver.
+If you get the expected output of the push action, the files are on the controlled webserver.
 
 ## Check if files are available on your server
 
@@ -127,6 +143,14 @@ Note: Replace with your actual web address and AID
 https://peacekeeper.github.io/did-webs-iiw37-tutorial/EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP/did.json
 
 https://peacekeeper.github.io/did-webs-iiw37-tutorial/EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP/keri.cesr
+
+### Special attention Github Pages: Raw file content
+If you use static page generators to populate your github pages (e.g. Jekyll or Docusaurus) be sure to check the `Raw` version of your files:
+
+https://raw.githubusercontent.com/WOT-terms/test/did-webs-iiw37-tutorial/EDc2kYoDYWrQow0v6fbKvOypYzj_Vi-UxbEQv0rWC1Kx/did.json
+
+https://raw.githubusercontent.com/WOT-terms/test/did-webs-iiw37-tutorial/EDc2kYoDYWrQow0v6fbKvOypYzj_Vi-UxbEQv0rWC1Kx/keri.cesr
+
 
 ## (Optional) Resolve AID as did:keri using local resolver
 
@@ -146,6 +170,19 @@ Note: Replace with your actual web address and AID
 
 ```
 dkr did webs resolve --name controller --did did:webs:peacekeeper.github.io:did-webs-iiw37-tutorial:EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP
+```
+
+### Special attention Github Pages: using local resolver
+If you use static page generators to populate your github pages (e.g. Jekyll or Docusaurus) be sure to resolve the `Raw` version of your files:
+
+#### Example
+This is the web address of the docusaurus directory:
+https://weboftrust.github.io/WOT-terms/test/did-webs-iiw37-tutorial/
+
+```
+Inside-container command:
+
+bash-5.1# dkr did webs resolve --name controller --did did:webs:raw.githubusercontent.com:WOT-terms:test:did-webs-iiw37-tutorial:EDc2kYoDYWrQow0v6fbKvOypYzj_Vi-UxbEQv0rWC1Kx
 ```
 
 ## Resolve as did:web using Universal Resolver
