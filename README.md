@@ -10,6 +10,9 @@ docker compose down
 docker compose up -d
 docker compose exec dkr /bin/bash
 ```
+Note - If you are using an Apple Silicon (M1) mac then you might need to:
+* In Docker, select `Use Rosetta for x86/amd64 emulation on Apple Silicon`
+* Before running docker compose `export DOCKER_DEFAULT_PLATFORM=linux/amd64`
 
 ### Your docker container is already up- and running?
 

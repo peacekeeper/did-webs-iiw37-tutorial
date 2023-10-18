@@ -17,7 +17,7 @@ services:
     dkr:
         container_name: dkr
         hostname: dkr
-        image: gleif/dkr:iiw37
+        image: gleif/dkr:latest
         tty: true
         volumes:
             - ./volume/dkr/my-scripts/:/keripy/my-scripts/
