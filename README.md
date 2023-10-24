@@ -68,6 +68,9 @@ EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP
 
 Optionally use `kli` to perform additional KERI operations such as key rotation, threshold signatures, etc., see KERI docs for details.
 
+See [an example](#example-key-rotation) below.
+
+
 ## Decide your web address for did:webs
 
 Find a web address (domain, optional port, optional path) that you control.
@@ -195,3 +198,16 @@ https://dev.uniresolver.io/#did:web:peacekeeper.github.io:did-webs-iiw37-tutoria
 ## Resolve as did:webs using Universal Resolver
 
 https://dev.uniresolver.io/#did:webs:peacekeeper.github.io:did-webs-iiw37-tutorial:EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP
+
+## Example key rotation
+
+Use the following two commands in your running Docker container.
+
+```
+kli rotate --name controller --alias controller
+```
+Be sure to repeat the `dkr webs generate` command:
+```
+dkr did webs generate --name controller --did did:webs:blockchainbird.org:did-webs:EG8GsKYdICKs-zI6odM6tvCmxRT2J-7UkZFqA77agtb8 --oobi http://witnesshost:5642/oobi/EG8GsKYdICKs-zI6odM6tvCmxRT2J-7UkZFqA77agtb8/witness/BBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha
+```
+Now upload the overwritten `did.json` and `keri.cesr` again to the public spot.
