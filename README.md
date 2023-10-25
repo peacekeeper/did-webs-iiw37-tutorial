@@ -190,14 +190,16 @@ docker compose up -d
 docker compose exec dkr /bin/bash
 ```
 ### Special attention Github Pages: web address
-If you use static page generators to populate your github pages (e.g. Jekyll or Docusaurus) be sure to choose the right spot of your file links:
+There's no problem that we know of when you use Github pages in a bare-bones manner. However, if you use static page generators to populate your github pages (e.g. Jekyll or Docusaurus) be sure to choose the right spot of your files and extract the right paths of the links needed to resolve:
 
 #### Example
-This is the web address of the docusaurus directory:
+This is the web address of the `docusaurus` directory:
 https://weboftrust.github.io/WOT-terms/test/did-webs-iiw37-tutorial/
 
 But the exact spot to extract the files as text would be something like:
 ```
 http://raw.githubusercontent.com/WOT-terms/test/did-webs-iiw37-tutorial/[your AID] 
 ```
-We advise to choose a simple public directory that you control and won't go into more detail on how to deal with static site generators.
+The reason for this confusion is dat a static page generator like Docusaurus or Jekyll might interfere with the location, visibility and accessibility of your files on Github Pages.
+
+We advise to choose a simple public directory that you control and we won't go into more detail on how to deal with static site generators.
