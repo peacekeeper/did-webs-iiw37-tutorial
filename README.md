@@ -168,6 +168,11 @@ dkr did webs generate --name controller --did did:webs:blockchainbird.org:did-we
 ```
 Now upload the overwritten `did.json` and `keri.cesr` again to the public spot.
 
+A diff comparison of the old (in green) and the new (in red) **did.json**:
+![did.json new in red versus old in green](./images/diff-did-json.png)
+A diff comparison of the old (right) and the new (left) **keri.cesr**; in blue the added part:
+![keri.cesr new in red versus old in green](./images/diff-keri-cesr.png)
+
 ## Trouble shooting
 
 ### If you are using an Apple Silicon (M1) mac then you might need to:
