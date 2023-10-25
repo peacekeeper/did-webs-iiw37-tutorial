@@ -1,38 +1,11 @@
 # did:webs IIW37 Tutorial
 
+If you're running into trouble in the process below, be sure to check the section [Trouble Shooting](#trouble-shooting) below. 
+
 ## Run Docker containers with keripy and dkr
-
-Be sure if you're not running a fresh new install to check the next section "Your docker container is already up- and running". If fresh 'n new:
-
 
 ```
 docker compose down
-docker compose up -d
-docker compose exec dkr /bin/bash
-```
-Note - If you are using an Apple Silicon (M1) mac then you might need to:
-* In Docker, select `Use Rosetta for x86/amd64 emulation on Apple Silicon`
-* Before running docker compose `export DOCKER_DEFAULT_PLATFORM=linux/amd64`
-
-### Your docker container is already up- and running?
-
-#### Do you have a witness up for another identifier?
-Then the `kli incept --name controller --alias controller --file "/keripy/my-scripts/my-incept.json"` command will give this response:
-
-`ERR: Already incepted pre=[Your prefix of another AID].`
- 
-#### Solution
-Various solution if you're a Docker expert. If not, we'll go down the more rigorous path:
-
-1. Step out of the running container with `exit` 
-2. and then `docker compose down`. This should respond with:
-
-[+] Running 3/3
- ⠿ Container dkr                            Removed                                                                                                                                                                              0.0s
- ⠿ Container witnesshost                    Removed                                                                                                                                                                             13.7s
- ⠿ Network did-webs-iiw37-tutorial_default  Removed                                                                                                                                                                              3.1s
-Now you could continue with:
-```
 docker compose up -d
 docker compose exec dkr /bin/bash
 ```
@@ -81,11 +54,11 @@ Example web address:
 https://peacekeeper.github.io/did-webs-iiw37-tutorial/
 ```
 
-
 ## Generate did:webs files for AID
 
 Note: Replace with your actual web address and AID, convert to did:web(s) conformant identifier
 
+Be sure to execute the command in the root of your local `did-webs` repo (and in the Docker container)
 ```
 dkr did webs generate --name controller --did did:webs:peacekeeper.github.io:did-webs-iiw37-tutorial:EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP --oobi http://witnesshost:5642/oobi/EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP/witness/BBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha
 ```
@@ -100,17 +73,6 @@ You can access these files either from within your Docker container or on your l
 
 and extend those paths with either `did_json/<your AID>` or `keri_cesr/<your AID>`.
 
-### Special attention Github Pages: web address
-If you use static page generators to populate your github pages (e.g. Jekyll or Docusaurus) be sure to choose the `Raw` version of your file links:
-
-#### Example
-This is the web address of the docusaurus directory:
-https://weboftrust.github.io/WOT-terms/test/did-webs-iiw37-tutorial/
-
-```
-Inside-container command:
-bash-5.1# dkr did webs generate --name controller --did did:webs:raw.githubusercontent.com:WOT-terms:test:did-webs-iiw37-tutorial:EDc2kYoDYWrQow0v6fbKvOypYzj_Vi-UxbEQv0rWC1Kx --oobi http://witnesshost:5642/oobi/EDc2kYoDYWrQow0v6fbKvOypYzj_Vi-UxbEQv0rWC1Kx/witness/BBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha
-```
 
 ## Upload did.json and keri.cesr to your web server
 
@@ -150,12 +112,6 @@ https://peacekeeper.github.io/did-webs-iiw37-tutorial/EKYGGh-FtAphGmSZbsuBs_t4qp
 
 https://peacekeeper.github.io/did-webs-iiw37-tutorial/EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP/keri.cesr
 
-### Special attention Github Pages: Raw file content
-If you use static page generators to populate your github pages (e.g. Jekyll or Docusaurus) be sure to check the `Raw` version of your files:
-
-https://raw.githubusercontent.com/WOT-terms/test/did-webs-iiw37-tutorial/EDc2kYoDYWrQow0v6fbKvOypYzj_Vi-UxbEQv0rWC1Kx/did.json
-
-https://raw.githubusercontent.com/WOT-terms/test/did-webs-iiw37-tutorial/EDc2kYoDYWrQow0v6fbKvOypYzj_Vi-UxbEQv0rWC1Kx/keri.cesr
 
 
 ## (Optional) Resolve AID as did:keri using local resolver
@@ -211,3 +167,44 @@ Be sure to repeat the `dkr webs generate` command:
 dkr did webs generate --name controller --did did:webs:blockchainbird.org:did-webs:EG8GsKYdICKs-zI6odM6tvCmxRT2J-7UkZFqA77agtb8 --oobi http://witnesshost:5642/oobi/EG8GsKYdICKs-zI6odM6tvCmxRT2J-7UkZFqA77agtb8/witness/BBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha
 ```
 Now upload the overwritten `did.json` and `keri.cesr` again to the public spot.
+
+## Trouble shooting
+
+### If you are using an Apple Silicon (M1) mac then you might need to:
+* In Docker, select `Use Rosetta for x86/amd64 emulation on Apple Silicon`
+* Before running docker compose `export DOCKER_DEFAULT_PLATFORM=linux/amd64`
+
+### Your docker container is already up- and running?
+
+#### Do you have a witness up for another identifier?
+Then the `kli incept --name controller --alias controller --file "/keripy/my-scripts/my-incept.json"` command will give this response:
+
+`ERR: Already incepted pre=[Your prefix of another AID].`
+ 
+#### Solution
+Various solutions if you're a Docker expert. If not, we'll go down the more rigorous path:
+
+1. Step out of the running container with `exit` 
+2. and then `docker compose down`. This should respond with:
+
+[+] Running 3/3
+ ⠿ Container dkr                            Removed                                                                                                                                                                              0.0s
+ ⠿ Container witnesshost                    Removed                                                                                                                                                                             13.7s
+ ⠿ Network did-webs-iiw37-tutorial_default  Removed                                                                                                                                                                              3.1s
+Now you could continue with:
+```
+docker compose up -d
+docker compose exec dkr /bin/bash
+```
+### Special attention Github Pages: web address
+If you use static page generators to populate your github pages (e.g. Jekyll or Docusaurus) be sure to choose the right spot of of your file links:
+
+#### Example
+This is the web address of the docusaurus directory:
+https://weboftrust.github.io/WOT-terms/test/did-webs-iiw37-tutorial/
+
+But the exact spot to extract the files as text would be something like:
+```
+http://raw.githubusercontent.com/WOT-terms/test/did-webs-iiw37-tutorial/[your AID] 
+```
+We advise to choose a simple public directory that you control and won't go into more detail on how to deal with static site generators.
