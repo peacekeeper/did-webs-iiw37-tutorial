@@ -113,7 +113,6 @@ https://peacekeeper.github.io/did-webs-iiw37-tutorial/EKYGGh-FtAphGmSZbsuBs_t4qp
 https://peacekeeper.github.io/did-webs-iiw37-tutorial/EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP/keri.cesr
 
 
-
 ## (Optional) Resolve AID as did:keri using local resolver
 
 Optionally resolve the AID locally as did:keri, given an OOBI as resolution option.
@@ -132,19 +131,6 @@ Note: Replace with your actual web address and AID
 
 ```
 dkr did webs resolve --name controller --did did:webs:peacekeeper.github.io:did-webs-iiw37-tutorial:EKYGGh-FtAphGmSZbsuBs_t4qpsjYJ2ZqvMKluq9OxmP
-```
-
-### Special attention Github Pages: using local resolver
-If you use static page generators to populate your github pages (e.g. Jekyll or Docusaurus) be sure to resolve the `Raw` version of your files:
-
-#### Example
-This is the web address of the docusaurus directory:
-https://weboftrust.github.io/WOT-terms/test/did-webs-iiw37-tutorial/
-
-```
-Inside-container command:
-
-bash-5.1# dkr did webs resolve --name controller --did did:webs:raw.githubusercontent.com:WOT-terms:test:did-webs-iiw37-tutorial:EDc2kYoDYWrQow0v6fbKvOypYzj_Vi-UxbEQv0rWC1Kx
 ```
 
 ## Resolve as did:web using Universal Resolver
@@ -167,6 +153,8 @@ Be sure to repeat the `dkr webs generate` command:
 dkr did webs generate --name controller --did did:webs:blockchainbird.org:did-webs:EG8GsKYdICKs-zI6odM6tvCmxRT2J-7UkZFqA77agtb8 --oobi http://witnesshost:5642/oobi/EG8GsKYdICKs-zI6odM6tvCmxRT2J-7UkZFqA77agtb8/witness/BBilc4-L3tFUnfM_wJr4S4OJanAv_VmF_dJNN6vkf2Ha
 ```
 Now upload the overwritten `did.json` and `keri.cesr` again to the public spot.
+
+### Result
 
 A diff comparison of the old (in green) and the new (in red) **did.json**:
 ![did.json new in red versus old in green](./images/diff-did-json.png)
@@ -202,7 +190,7 @@ docker compose up -d
 docker compose exec dkr /bin/bash
 ```
 ### Special attention Github Pages: web address
-If you use static page generators to populate your github pages (e.g. Jekyll or Docusaurus) be sure to choose the right spot of of your file links:
+If you use static page generators to populate your github pages (e.g. Jekyll or Docusaurus) be sure to choose the right spot of your file links:
 
 #### Example
 This is the web address of the docusaurus directory:
